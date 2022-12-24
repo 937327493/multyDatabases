@@ -4,17 +4,15 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+/**
+ * @author wangziwei
+ */
 @Configuration
 @MapperScan(
         basePackages = "cn.wzw.multydatabases.tmsmapper",
@@ -22,8 +20,7 @@ import javax.sql.DataSource;
         sqlSessionTemplateRef = "tmsSqlSessionTemplate"
 )
 public class TmsMulConfiguration {
-    @Qualifier("tmsDateSource")
-    @Autowired
+    @Resource(name = "tmsDateSource")
     private DataSource dataSource;
 
     @Bean

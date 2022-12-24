@@ -5,10 +5,12 @@ import cn.wzw.multydatabases.wmsmapper.WmsMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import java.util.HashMap;
 
+/**
+ * @author wangziwei
+ */
 @RestController
 @RequestMapping("/test")
 public class TestController {
@@ -19,9 +21,9 @@ public class TestController {
 
     @GetMapping("/01")
     public void select() {
-        HashMap tmsMapperHashMap = tmsMapper.selectById();
+        HashMap<String, Object> tmsMapperHashMap = tmsMapper.selectById();
         System.out.println(tmsMapperHashMap.toString());
-        HashMap wmsMapperHashMap = wmsMapper.selectById();
+        HashMap<String, Object> wmsMapperHashMap = wmsMapper.selectById();
         System.out.println(wmsMapperHashMap.toString());
     }
 }
